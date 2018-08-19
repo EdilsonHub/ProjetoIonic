@@ -3,5 +3,9 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [{
+    "path": "/ubuntu-virtual",
+    "proxyUrl": "http://192.168.0.104:8080"
+  }]
 }
