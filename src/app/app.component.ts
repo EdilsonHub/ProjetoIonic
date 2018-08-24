@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CredenciaisDTO } from './models/credenciais.dto';
 
  
 @Component({
@@ -9,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
+
 
   rootPage: string = 'HomePage';
   //categoriaPage: string = 'CategoriasPage';
