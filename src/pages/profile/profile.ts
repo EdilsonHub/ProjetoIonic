@@ -40,10 +40,16 @@ export class ProfilePage {
           this.cliente = response;
           //pegar imagem da pessoa aqui
           this.getImagemExiste();
-    }, error => {})
+    }, error => {
+      if(error.status == 403) {
+        this.navCtrl.setRoot('HomePage');
+      }
+    })
   
     //acredito que o ideal seria assim: this.email = this.storageService.getLocalUser().email; // e os error devem ser tratados antes, nas classes anteriores
-  }
+  } else {
+    this.navCtrl.setRoot('HomePage');
+  } 
 
 }
   getImagemExiste() {
