@@ -7,9 +7,11 @@
 <ion-header>
 
   <ion-navbar>
+    
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
-        </button>
+      </button>
+
     <ion-title>Profile</ion-title>
   </ion-navbar>
 
@@ -17,5 +19,9 @@
 
 
 <ion-content padding>
- {{email}}
+  <ion-avatar>
+    <img class="circle" alt="" [src]="cliente?.imageUrl || 'assets/imgs/placeholder-profile-sq.jpg'" >
+  </ion-avatar>
+  <h2>{{cliente?.nome}}</h2>
+  <p>{{cliente?.email}}</p>
 </ion-content>

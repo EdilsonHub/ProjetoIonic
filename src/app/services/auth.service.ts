@@ -20,7 +20,10 @@ export class AuthService {
         return this.http.post(
          `${API_CONFIG.baseUrl}/login`,
          creds,
-         {observe: 'response',responseType: 'text'}
+         {
+             observe: 'response',
+             responseType: 'text'
+        }
         )
     }
 

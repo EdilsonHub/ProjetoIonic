@@ -14,11 +14,11 @@ export class ErrorInterceptor implements HttpInterceptor {
         return next.handle(req) //erros 
             .catch((error, caught) => {
 
-                //no curso o professor cria uma nova variavel
+            //    no curso o professor cria uma nova variavel
                 if(error.error) error = error.error;
                 if(!error.status) error = JSON.parse(error);
                 console.log("Erro detectado pelo interceptor");
-                console.log(error);
+                 console.log(error);
 
                 return Observable.throw(error);
             }) as any; 
@@ -27,8 +27,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     
 }
 
-export const ErrorInterceptorProviders = {
+
+export const ErrorInterceptorProvider = {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorInterceptor,
     multi: true
-}
+};
