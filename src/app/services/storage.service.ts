@@ -1,4 +1,3 @@
-import { CredenciaisDTO } from "../models/credenciais.dto";
 import { STORAGE_KEYS } from "../../config/storage_key.config";
 import { LocalUser } from "../models/localUser.dto";
 

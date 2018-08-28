@@ -1,9 +1,11 @@
 {
   "name": "cursoIonic",
- 
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
   "proxies": [{
     "path": "/ubuntu-virtual",
-    "proxyUrl": "http://192.168.0.105:8080"
+    "proxyUrl": "http://192.168.0.106:8080"
   }]
 }

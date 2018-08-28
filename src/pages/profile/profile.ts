@@ -5,13 +5,6 @@ import { ClienteDTO } from '../../app/models/cliente.dto';
 import { ClienteService } from '../../app/services/domain/cliente.service';
 import { API_CONFIG } from '../../config/api.config';
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-profile',
@@ -40,14 +33,16 @@ export class ProfilePage {
           this.cliente = response;
           //pegar imagem da pessoa aqui
           this.getImagemExiste();
-    }, error => {
+    },
+     error => {
       if(error.status == 403) {
         this.navCtrl.setRoot('HomePage');
       }
     })
   
     //acredito que o ideal seria assim: this.email = this.storageService.getLocalUser().email; // e os error devem ser tratados antes, nas classes anteriores
-  } else {
+   }
+  else {
     this.navCtrl.setRoot('HomePage');
   } 
 
