@@ -31,17 +31,21 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
 
+  ionViewDidEnter() {
+    this.authService.refreshToken().subscribe( response => {
+      this.authService.successfullLogin(response.headers.get('Authorization'));
+      this.navCtrl.setRoot('CategoriasPage');
+    }, error => {});
+  }
+  
+
   login() {
 
     console.log(this.creds);
 
     this.authService.authenticate(this.creds).subscribe( response => {
-      console.log("1");
       this.authService.successfullLogin(response.headers.get('Authorization'));
-      console.log("2");
       this.navCtrl.setRoot('CategoriasPage');
-      console.log("3");
-
     }, error => {});
   }
 }
