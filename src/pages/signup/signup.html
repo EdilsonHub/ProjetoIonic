@@ -15,16 +15,16 @@
 
 <ion-content padding>
   <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
-    <ion-item>
+    <!-- <ion-item>
       <ion-label></ion-label>
       <ion-input></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
         <ion-label stacked >Nome*</ion-label>
         <ion-input formControlName="nome" type="text"></ion-input>
     </ion-item>
-
+    <p class="danger" *ngIf="formGroup.controls.nome.dirty && formGroup.controls.nome.errors" margin-left>Campo inválido!</p>
 
     <ion-item>
         <ion-label stacked >Email*</ion-label>
@@ -42,6 +42,7 @@
             <ion-label>Pessoa física*</ion-label>
             <ion-radio checked="true" value="1"></ion-radio>
           </ion-item>
+          
     
           <ion-item>
               <ion-label>Pessoa juridica*</ion-label>
@@ -49,26 +50,34 @@
           </ion-item>
      
         </ion-list>
+        <p class="danger" *ngIf="formGroup.controls.tipo.dirty && formGroup.controls.tipo.errors" margin-left>Campo inválido!</p>
 
           <ion-item>
               <ion-label stacked>Cpf ou Cnpj*</ion-label>
               <ion-input formControlName="CpfOuCnpj" type="text"></ion-input>
           </ion-item>
+          <p class="danger" *ngIf="formGroup.controls.CpfOuCnpj.dirty && formGroup.controls.CpfOuCnpj.errors" margin-left>Campo inválido!</p>
           
           <ion-item>
               <ion-label stacked>Senha*</ion-label>
               <ion-input formControlName="senha" type="password"></ion-input>
           </ion-item>
+          <p class="danger" *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>Campo inválido!</p>
+          
 
           <ion-item>
               <ion-label stacked>Logradouro</ion-label>
               <ion-input formControlName="logradouro" type="text"></ion-input>
-          </ion-item>
+          </ion-item> 
+          <p class="danger" *ngIf="formGroup.controls.logradouro.dirty && formGroup.controls.logradouro.errors" margin-left>Campo inválido!</p>
+
 
           <ion-item>
               <ion-label stacked>Número*</ion-label>
               <ion-input formControlName="numero" type="text"></ion-input>
           </ion-item>
+          <p class="danger" *ngIf="formGroup.controls.numero.dirty && formGroup.controls.numero.errors" margin-left>Campo inválido!</p>
+
 
           
           <ion-item>
@@ -81,18 +90,24 @@
               <ion-label stacked>Bairro</ion-label>
               <ion-input formControlName="bairro" type="text"></ion-input>
           </ion-item>
+          <p class="danger" *ngIf="formGroup.controls.bairro.dirty && formGroup.controls.bairro.errors" margin-left>Campo inválido!</p>
+
 
 
           <ion-item>
               <ion-label stacked>CEP*</ion-label>
               <ion-input formControlName="cep" type="text"></ion-input>
           </ion-item>
+          <p class="danger" *ngIf="formGroup.controls.cep.dirty && formGroup.controls.cep.errors" margin-left>Campo inválido!</p>
+
 
 
           <ion-item>
               <ion-label stacked>Telefone1*</ion-label>
               <ion-input formControlName="telefone1" type="text"></ion-input>
           </ion-item>
+          <p class="danger" *ngIf="formGroup.controls.telefone1.dirty && formGroup.controls.telefone1.errors" margin-left>Campo inválido!</p>
+
 
           <ion-item>
               <ion-label stacked>Telefone2*</ion-label>
@@ -116,11 +131,11 @@
           <ion-item>
               <ion-label>Cidade*</ion-label>
                 <ion-select formControlName="cidadeId">
-                    <ion-option *ngFor="let cidade of cidades" [value]="cidade.id">
+                    <ion-option *ngFor="let cidade of  cidades" [value]="cidade.id">
                         {{cidade.nome}}
                     </ion-option>
                 </ion-select>
             </ion-item>
-            <button ion-button block  type="submit"> Criar conta</button>
+            <button ion-button block  [disabled]="formGroup.invalid" type="submit"> Criar conta</button>
   </form>
 </ion-content>
