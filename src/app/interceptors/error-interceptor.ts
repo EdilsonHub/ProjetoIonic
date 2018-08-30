@@ -16,7 +16,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         console.log("passamos");
-
         return next.handle(req) //erros 
             .catch((error, caught) => {
           //      let copia_error = error;
@@ -51,7 +50,8 @@ export class ErrorInterceptor implements HttpInterceptor {
         this.storage.setLocalUser(null);
     }
     handle401(){
-        let alert = this.alertControl.create({
+        //let alert = 
+        this.alertControl.create({
             title: 'Erro 401: Falha na autenticação',
             message: 'email ou senha estão incorretos',
             enableBackdropDismiss: false,
@@ -60,9 +60,9 @@ export class ErrorInterceptor implements HttpInterceptor {
                     text: 'ok'
                 }
             ]
-        });
+        }).present();// erro introduzido aqui de propósito... corrigir agora, corrigido!
 
-        alert.present();
+        //alert.present();
     }
 
     handleDefault(error){

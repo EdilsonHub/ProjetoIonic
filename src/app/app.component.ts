@@ -53,7 +53,7 @@ export class MyApp {
         this.authService.logout();
         this.nav.setRoot('HomePage');
        break;
-    
+      
     default :
       this.nav.setRoot(page.component);
     }

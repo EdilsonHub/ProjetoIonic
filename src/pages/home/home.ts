@@ -8,7 +8,8 @@ import { AuthService } from '../../app/services/auth.service';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-@IonicPage()
+
+@IonicPage() 
 export class HomePage {
 
   
@@ -44,8 +45,14 @@ export class HomePage {
     console.log(this.creds);
 
     this.authService.authenticate(this.creds).subscribe( response => {
+    
       this.authService.successfullLogin(response.headers.get('Authorization'));
       this.navCtrl.setRoot('CategoriasPage');
+      
     }, error => {});
+  }
+
+  signup() {
+    this.navCtrl.push('SignupPage');
   }
 }
