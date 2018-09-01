@@ -21,7 +21,7 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    private authService: AuthService
+    public authService: AuthService
   ){
       
       this.initializeApp();

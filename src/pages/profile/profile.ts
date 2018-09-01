@@ -36,6 +36,7 @@ export class ProfilePage {
     },
      error => {
       if(error.status == 403) {
+        
         this.navCtrl.setRoot('HomePage');
       }
     })

@@ -14,10 +14,35 @@ export class ClienteService {
     ){}
 
     findByEmail(email: string): Observable<ClienteDTO>{       
-        return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`);
+        return this.http.get<ClienteDTO>(`${API_CONFIG.baseUrl}/clientes/email?value=${email}
+        `);
     }
 
     getImagemFromBucket(id: string): Observable<any> {
-        return this.http.get(`${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`,{ responseType: 'blob'});
+        return this.http
+        .get(`${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`,
+            {
+                responseType: 'blob'
+            }
+        );
+    }
+
+    // insert(cliente){
+    //     return this.http.post(`${API_CONFIG.baseUrl}/clientes`,cliente,{
+    //             observe: 'response',
+    //             responseType: 'text'
+    //         }
+    //     );
+    // }
+
+    insert(obj : ClienteDTO) {
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/clientes`, 
+            obj,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        ); 
     }
 } 

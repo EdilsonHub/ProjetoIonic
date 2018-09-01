@@ -8,6 +8,7 @@ import { API_CONFIG } from "../../../config/api.config";
 export class CategoriaService {
 
     categorias :CategoriaDTO[];
+    
     constructor(public http: HttpClient){}
 
     findAll() : Observable<CategoriaDTO[]> {

@@ -23,7 +23,7 @@ export class AuthService {
          {
              observe: 'response',
              responseType: 'text'
-        }
+         }
         )
     }
 
@@ -34,7 +34,7 @@ export class AuthService {
          {
              observe: 'response',
              responseType: 'text'
-        }
+         }
         )
     }
 
