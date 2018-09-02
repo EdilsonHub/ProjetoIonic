@@ -40,8 +40,8 @@ export class CategoriasPage {
     //console.log('ionViewDidLoad CategoriasPage');
   }
 
-  visualizarProdutos() {
-    this.navCtrl.setRoot('ProdutosPage');
+  visualizarProdutos(categoria_id: string) {
+    this.navCtrl.push('ProdutosPage',{categoria_id: categoria_id});
   }
 
 

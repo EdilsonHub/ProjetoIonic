@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProdutoDTO } from '../../app/models/produto.dto';
+import { ProdutoService } from '../../app/services/domain/produto.service';
 
 /**
  * Generated class for the ProdutosPage page.
@@ -16,17 +17,20 @@ import { ProdutoDTO } from '../../app/models/produto.dto';
 })
 export class ProdutosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private produtoService: ProdutoService
+  ){}
 
-  items: ProdutoDTO[] = [
-    {id: "1", nome: "ima de geladeira", preco: 87.88},
-    {id: "2", nome: "camisinha de protituta", preco: 0.88},
-    {id: "3", nome: "buceta macia", preco: 10000}
-  ];
+  items: ProdutoDTO[];
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProdutosPage');
+    this.produtoService.findByCategoria(this.navParams.get("categoria_id"))
+      .subscribe(response => {
+        this.items = response['content'];
+        //this.items = response.content; parece funcionar tambem
+      },errors => {});
   }
 
 }
