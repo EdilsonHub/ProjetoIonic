@@ -60,15 +60,15 @@ export class SignupPage {
       this.estados = response;
       this.formGroup.controls.estadoId.setValue(this.estados[0].id);
       this.updateCidades();
-    }),errors => {};
+    },errors => {});
   }
   updateCidades(){
     this.cidadeService.findAll(this.formGroup.value.estadoId).subscribe(response => {
       this.cidades = response;
       this.formGroup.controls.cidadeId.setValue(null);
-    }),errors => {};
-  }
-
+    },errors => {});
+  }  
+    
   signupUser() {
     this.clientService.insert(this.formGroup.value)
     .subscribe(response => {
