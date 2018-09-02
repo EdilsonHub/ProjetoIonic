@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProdutoDTO } from '../../app/models/produto.dto';
 import { ProdutoService } from '../../app/services/domain/produto.service';
+import { API_CONFIG } from '../../config/api.config';
 
 /**
  * Generated class for the ProdutosPage page.
@@ -29,8 +30,17 @@ export class ProdutosPage {
     this.produtoService.findByCategoria(this.navParams.get("categoria_id"))
       .subscribe(response => {
         this.items = response['content'];
+        this.loadUrlsImages();
         //this.items = response.content; parece funcionar tambem
       },errors => {});
+  }
+
+  loadUrlsImages() {
+    this.items.forEach(n => {
+      this.produtoService.getImageSmallFromBucket(n.id).subscribe(response => {
+        n.imagemUrl = `${API_CONFIG.bucketBaseUrl}/prod${n.id}-small.jpg`;
+      },errors => {});
+    });
   }
 
 }
